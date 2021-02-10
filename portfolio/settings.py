@@ -36,7 +36,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['portfolio-ktradev.herokuapp.com', 'localhost', 'www.ktradev.com']
+ALLOWED_HOSTS = ['ktradevportfolio.herokuapp.com', 'localhost', 'www.ktradev.com']
 
 
 # Application definition
