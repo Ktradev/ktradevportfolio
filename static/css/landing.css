@@ -1,0 +1,59 @@
+/*https://stackoverflow.com/questions/48671035/css-unhover-property*/
+body{
+	overflow-x: hidden;
+}
+
+#cta{
+	color: white;
+	border-color: #395550;
+	background-color: #395550;
+	transition: 0.5s;
+}
+
+#moon{
+	color: #395550;
+	transition: 0.5s;
+}
+
+#logo{
+	width: 40rem;
+	height: 20rem;
+}
+
+.st0{
+	transition: 0.5s;
+}
+
+@-webkit-keyframes night {
+	0%{ 
+		color: #395550;
+		background-color: white;
+	}
+	100%{
+		color: white;
+		background-color: #395550;
+	}
+}
+
+@-webkit-keyframes day {
+	0%{
+		color: white;
+		background-color: #395550;
+	}
+	100%{
+		color: #395550;
+		background-color: white;
+	}
+}
+
+.night{
+	animation: night 0.5s ease-in-out;
+	color: white;
+	background-color: #395550;
+}
+
+.day{
+	animation: day 0.5s ease-in-out;
+	color: #395550;
+	background-color: white;
+}

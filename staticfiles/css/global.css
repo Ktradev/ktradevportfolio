@@ -1,0 +1,8 @@
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+h3, small, span, p{
+	word-wrap: break-word;
+}

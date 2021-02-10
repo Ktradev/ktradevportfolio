@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<title>Ktradev's Timeline</title>
+		<link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+		<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" integrity="sha512-+WF6UMXHki/uCy0vATJzyA9EmAcohIQuwpNz0qEO+5UeE5ibPejMRdFuARSrl1trs3skqie0rY/gNiolfaef5w==" crossorigin="anonymous" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/timeline.css' %}">
+		<script src="https://kit.fontawesome.com/6878bbf26a.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav class="flex justify-center lg:w-6/12 md:w-9/12 w-full mx-auto py-4 mt-8 px-5 sticky top-0 bg-white z-20">
+			<span class="font-semibold w-full text-center">My timeline</span>
+			<span id="menu" class="ml-auto"><i class="fas fa-bars cursor-pointer"></i></span>
+		</nav>
+		<div id="dropdown" class="flex flex-col items-center px-4 sticky top-12 z-20 hidden">
+			<div class="flex flex-col justify-center lg:w-6/12 md:w-9/12 w-full bg-white text-gray-500 px-2 pb-4">
+				<a href="{% url 'timeline' %}">
+					<div class="flex dropdown-item p-4 cursor-pointer hover:bg-gray-100 bg-gray-100">
+						<div class="dropdown-icon"><i class="fas fa-code-branch"></i></div>
+						<div class="dropdown-text ml-4">Timeline</div>
+					</div>
+				</a>
+				<a href="https://blog.ktradev.com/">
+					<div class="flex dropdown-item p-4 cursor-pointer hover:bg-gray-100">
+						<div class="dropdown-icon"><i class="fas fa-burn"></i></div>
+						<div class="dropdown-text ml-4">Blog format</div>
+					</div>
+				</a>
+				<a href="{% url 'contact' %}">
+					<div class="flex dropdown-item p-4 cursor-pointer hover:bg-gray-100">
+						<div class="dropdown-icon"><i class="fab fa-wpforms"></i></div>
+						<div class="dropdown-text ml-4">Contact form</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div id="container" class="flex flex-col items-center px-4 pb-8">
+			<div class="lg:w-6/12 md:w-9/12 w-full text-gray-500">
+				{% for date in dates %}
+					<div class="date">
+						<div class="flex my-8">
+							<h3>{{ date.date | date:"l" }}</h3>
+							<h3 class="ml-auto">{{ date.date }}</h3>
+						</div>
+						{% for timestamp in timestamps %}
+							{% if timestamp.date.id == date.id %}
+								<div class="timestamp">
+									<div class="flex justify-center items-center w-6 h-6 bg-{{ timestamp.color }}-500 rounded-full text-white">
+										<i class="fas fa-{{ timestamp.icon }} fa-xs"></i>
+									</div>
+									{% for panel in panels %}
+										{% if panel.timestamp.id == timestamp.id %}
+											<div class="border-l-4 border-gray-300 ml-2.5 py-3">
+												<div class="flex ml-7 bg-{{ timestamp.color }}-100 text-{{ timestamp.color }}-700 rounded-xl p-4 relative">
+													<div class="w-11/12">
+														<h3 class="font-semibold">{{ panel.title }}</h3>
+														<small>{{ panel.description | truncatechars:40 }}</small>
+													</div>
+													<div class="p-2 ml-auto setting">
+														<i class="fas fa-ellipsis-v fa-xs cursor-pointer"></i>
+													</div>
+													<div class="tooltip absolute z-10 hidden">
+														<div class="triangle absolute"></div>
+														<div class="tooltip-container bg-white rounded-lg shadow-lg py-2">
+															<div class="flex flex-col">
+																<a class="px-4 py-2 cursor-pointer hover:bg-gray-100" href="{% url 'library' id=panel.id %}">Read more</a>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										{% endif %}
+									{% endfor %}
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				{% endfor %}
+				<!--
+				<div class="date">
+					<div class="flex my-8">
+						<h3>Friday</h3>
+						<h3 class="ml-auto">Jan 03</h3>
+					</div>
+					<div class="timestamp">
+						<div class="flex justify-center items-center w-6 h-6 bg-green-500 rounded-full text-white">
+							<i class="fas fa-sticky-note fa-xs"></i>
+						</div>
+						<div class="border-l-4 border-gray-300 ml-2.5 py-3">
+							<div class="flex ml-7 bg-green-100 text-green-700 rounded-xl p-4">
+								<div>
+									<h3 class="font-semibold">Consultation</h3>
+									<small class="pl-0.5">3:00 - 9:30 &nbsp;&nbsp;&bull;&nbsp;&nbsp; Kenny Tran</small>
+								</div>
+								<div class="p-2 ml-auto">
+									<i class="fas fa-ellipsis-v fa-xs cursor-pointer"></i>
+								</div>
+							</div>
+						</div>
+						<div class="border-l-4 border-gray-300 ml-2.5 py-3">
+							<div class="flex ml-7 bg-green-100 text-green-700 rounded-xl p-4">
+								<div>
+									<h3 class="font-semibold">Consultation</h3>
+									<small class="pl-0.5">3:00 - 9:30 &nbsp;&nbsp;&bull;&nbsp;&nbsp; Kenny Tran</small>
+								</div>
+								<div class="p-2 ml-auto">
+									<i class="fas fa-ellipsis-v fa-xs cursor-pointer"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="timestamp">
+						<div class="flex justify-center items-center w-6 h-6 bg-red-500 rounded-full text-white">
+							<i class="fas fa-sticky-note fa-xs"></i>
+						</div>
+						<div class="border-l-4 border-gray-300 ml-2.5 py-3">
+							<div class="flex ml-7 bg-red-100 text-red-700 rounded-xl p-4">
+								<div>
+									<h3 class="font-semibold">Consultation</h3>
+									<small class="pl-0.5">3:00 - 9:30 &nbsp;&nbsp;&bull;&nbsp;&nbsp; Kenny Tran</small>
+								</div>
+								<div class="p-2 ml-auto">
+									<i class="fas fa-ellipsis-v fa-xs cursor-pointer"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="timestamp">
+						<div class="flex justify-center items-center w-6 h-6 bg-yellow-500 rounded-full text-white">
+							<i class="fas fa-sticky-note fa-xs"></i>
+						</div>
+						<div class="border-l-4 border-gray-300 ml-2.5 py-3">
+							<div class="flex ml-7 bg-yellow-100 text-yellow-700 rounded-xl p-4">
+								<div>
+									<h3 class="font-semibold">Consultation</h3>
+									<small class="pl-0.5">3:00 - 9:30 &nbsp;&nbsp;&bull;&nbsp;&nbsp; Kenny Tran</small>
+								</div>
+								<div class="p-2 ml-auto">
+									<i class="fas fa-ellipsis-v fa-xs cursor-pointer"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script src="{% static 'js/navbar.js' %}"></script>
+		<script src="{% static 'js/timeline.js' %}"></script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<title>Ktradev's Contact form</title>
+		<link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+		<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" integrity="sha512-+WF6UMXHki/uCy0vATJzyA9EmAcohIQuwpNz0qEO+5UeE5ibPejMRdFuARSrl1trs3skqie0rY/gNiolfaef5w==" crossorigin="anonymous" />
+		<link rel="stylesheet" type="text/css" href="{% static 'css/global.css' %}">
+		<script src="https://kit.fontawesome.com/6878bbf26a.js" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav class="flex justify-center lg:w-6/12 md:w-9/12 w-full mx-auto py-4 mt-8 px-5 sticky top-0 bg-white z-20">
+			<span class="font-semibold w-full text-center">Contact form</span>
+			<span id="menu" class="ml-auto"><i class="fas fa-bars cursor-pointer"></i></span>
+		</nav>
+		<div id="dropdown" class="flex flex-col items-center px-4 sticky top-12 z-20 hidden">
+			<div class="flex flex-col justify-center lg:w-6/12 md:w-9/12 w-full bg-white text-gray-500 px-2 pb-4">
+				<a href="{% url 'timeline' %}">
+					<div class="flex dropdown-item p-4 cursor-pointer hover:bg-gray-100">
+						<div class="dropdown-icon"><i class="fas fa-code-branch"></i></div>
+						<div class="dropdown-text ml-4">Timeline</div>
+					</div>
+				</a>
+				<a href="https://blog.ktradev.com/">
+					<div class="flex dropdown-item p-4 cursor-pointer hover:bg-gray-100">
+						<div class="dropdown-icon"><i class="fas fa-burn"></i></div>
+						<div class="dropdown-text ml-4">Blog format</div>
+					</div>
+				</a>
+				<a href="{% url 'contact' %}">
+					<div class="flex dropdown-item p-4 cursor-pointer hover:bg-gray-100 bg-gray-100">
+						<div class="dropdown-icon"><i class="fab fa-wpforms"></i></div>
+						<div class="dropdown-text ml-4">Contact form</div>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div id="contact" class="flex flex-col items-center px-4 pb-8 text-gray-500">
+			<div class="flex lg:w-6/12 md:w-9/12 w-full mt-8 mb-4">
+				<h3>Get in touch</h3>
+				<h3 class="ml-auto">Kenny Tran</h3>
+			</div>
+			<a href="tel:+46723164760" class="flex flex-col justify-center items-center lg:w-6/12 md:w-9/12 w-full h-48 bg-gray-100">
+				<i class="fas fa-phone fa-2x"></i>
+				<p class="mt-4">(+46) 72 316 47 60</p>
+			</a>
+			<form class="flex flex-col lg:w-6/12 md:w-9/12 w-full" method="post">
+				{% csrf_token %}
+				<input class="p-4 my-2 border-b-2 border-gray-300 focus:outline-none" type="email" name="contact_email" placeholder="Email" required>
+				<textarea class="p-4 my-2 border-2 border-gray-300 focus:outline-none resize-none" name="contact_message" placeholder="Message" rows="5" required></textarea>
+				<button class="p-4 my-2 border-2 border-gray-300 focus:outline-none">Submit</button>
+			</form>
+		</div>
+		<script src="{% static 'js/navbar.js' %}"></script>
+	</body>
+</html>

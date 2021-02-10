@@ -1,0 +1,18 @@
+.tooltip{
+	top: 3rem;
+	right: 0rem;
+}
+
+.tooltip-container{
+	width: 12.8rem;
+}
+
+.triangle{
+	width: 0;
+	height: 0;
+	top: -0.5rem;
+	right: 1.105rem;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 10px solid white;
+}
