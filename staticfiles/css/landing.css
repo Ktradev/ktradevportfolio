@@ -15,15 +15,6 @@ body{
 	transition: 0.5s;
 }
 
-#logo{
-	width: 40rem;
-	height: 20rem;
-}
-
-.st0{
-	transition: 0.5s;
-}
-
 @-webkit-keyframes night {
 	0%{ 
 		color: #395550;

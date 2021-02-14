@@ -19,9 +19,9 @@ env = environ.Env(
 
 environ.Env.read_env()
 
-SECURE_SSL_REDIRECT=True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+#SECURE_SSL_REDIRECT=True
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
