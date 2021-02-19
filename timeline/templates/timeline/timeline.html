@@ -50,7 +50,7 @@
 							{% if timestamp.date.id == date.id %}
 								<div class="timestamp">
 									<div class="flex justify-center items-center w-6 h-6 bg-{{ timestamp.color }}-500 rounded-full text-white">
-										<i class="fas fa-{{ timestamp.icon }} fa-xs"></i>
+										<i class="{{ timestamp.icon }} fa-xs"></i>
 									</div>
 									{% for panel in panels %}
 										{% if panel.timestamp.id == timestamp.id %}
