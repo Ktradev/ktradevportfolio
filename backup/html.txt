@@ -1,0 +1,68 @@
+In this block I'm going to cover what I learned from studying <strong>[HTML]</strong> and my process throughout my learning period
+<br/><br/>
+I started learning HTML when I was in 8th grade. Using the sublime text editor, I was able to build simple websites that had little to no styling. Around this time HTML5 was just released and I was fortunate enough to play around with some of the new features
+<br/><br/>
+For me learning HTML took a little longer then expected. I was studying on my own and didn't really have a clear learning path. I was obsessed with learning all of the HTML tags and it took me awhile to realize that I didn't need to know all existing tags in order to move forward. Having the fundamentals down and understanding the concepts was enough
+<br/><br/>
+<hr>
+<br/>
+<span class="text-yellow-500">Headings</span><br/><br/>
+<h1 class="text-6xl inline">H1</h1>
+<h2 class="text-5xl inline">H2</h2>
+<h3 class="text-4xl inline">H3</h3>
+<h4 class="text-3xl inline">H4</h4>
+<h5 class="text-2xl inline">H5</h5>
+<h6 class="text-xl inline">H6</h6>
+<br/><br/>
+<span class="text-yellow-500">Comments</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+&lt;!--This is a simple comment--&gt;<br/>
+&lt;!--<br/>
+Here are comments<br/>
+stacked on top of each other<br/>
+--&gt;
+</div>
+<br/>
+<span class="text-yellow-500">Images</span><br/><br/>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1613764225253/za-d4Y837.jpeg" alt="image">
+<small>Christopher Gower</small>
+<small>@cgower</small>
+<br/><br/>
+<span class="text-yellow-500">Links</span><br/><br/>
+<a href="https://www.google.com/">Here's a link to google</a><br/>
+<a href="#library">Here's a link taking you to the top of the page</a>
+<br/><br/>
+<span class="text-yellow-500">Unordered list</span><br/><br/>
+<ul class="list-disc ml-5">
+<li>Apples</li>
+<li>Bananas</li>
+<li>Oranges</li>
+</ul>
+<br/>
+<span class="text-yellow-500">Ordered list</span><br/><br/>
+<ol class="list-decimal ml-5">
+<li>Write a blog</li>
+<li>Design landing page</li>
+<li>Prepare for upcoming exam</li>
+</ol>
+<br/>
+<span class="text-yellow-500">Form elements</span><br/><br/>
+<input class="w-full p-4 my-2 border-2 border-gray-300 focus:outline-none block" type="email" placeholder="Email">
+<input class="w-full p-4 my-2 border-2 border-gray-300 focus:outline-none block" type="password" placeholder="Password">
+<input class="w-full p-4 my-2 border-2 border-gray-300 focus:outline-none block" type="submit">
+<br/>
+<span class="text-yellow-500">Structure</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+&lt;!<span class="text-red-300">DOCTYPE</span> <span class="text-purple-300">HTML</span>&gt;<br/>
+&lt;<span class="text-red-300">html</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">head</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">meta</span> /&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">&lt;--Links and relevant resources goes here--&gt;</span> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-red-300">head</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">body</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">div</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-red-300">div</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">&lt;--Scripts dependent on elements goes here--&gt;</span> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-red-300">body</span>&gt;<br/>
+&lt;/<span class="text-red-300">html</span>&gt;<br/>
+</div>

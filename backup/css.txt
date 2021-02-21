@@ -1,0 +1,69 @@
+In this block I'm going to cover what I learned from studying <strong>[CSS]</strong> and my process throughout my learning period
+<br/><br/>
+I was introduced to CSS not long after I had started learning about <a href="https://www.ktradev.com/library/4" class="text-yellow-500">HTML</a>. In my previous web projects I would add a link to my stylesheets where I would try to change the style of the elements. By doing so I became more familiarized with CSS and was able to transition into working with preprocessors like <a href="https://www.ktradev.com/library/7" class="text-pink-500">SASS</a>
+<br/><br/>
+CSS has a lot of properties much like how HTML has various tags. It was a tough learning curve for me but because the changes that I made was visual. I was able to grasp some of the concepts much faster. Later on when I became more confident with CSS, I began looking into frameworks like <a href="https://www.ktradev.com/library/8" class="text-purple-500">Bootstrap</a>
+<br/><br/>
+<hr>
+<br/>
+<span class="text-blue-500">Colors</span><br/><br/>
+<div class="w-4 h-4 bg-red-500 inline-block"></div>
+<div class="w-4 h-4 bg-yellow-500 inline-block"></div>
+<div class="w-4 h-4 bg-green-500 inline-block"></div>
+<div class="w-4 h-4 bg-blue-500 inline-block"></div>
+<div class="w-4 h-4 bg-indigo-500 inline-block"></div>
+<div class="w-4 h-4 bg-purple-500 inline-block"></div>
+<div class="w-4 h-4 bg-pink-500 inline-block"></div>
+<br/><br/>
+<span class="text-blue-500">Font size</span><br/><br/>
+<span class="text-4xl">Lorem</span>
+<span class="text-3xl">Lorem</span>
+<span class="text-2xl">Lorem</span>
+<span class="text-xl">Lorem</span>
+<br/><br/>
+<span class="text-blue-500">Font family</span><br/><br/>
+<span class="font-serif block">Serif</span>
+<span class="font-sans block">Sans-serif</span>
+<span class="font-mono block">Monospaced</span>
+<br/>
+<span class="text-blue-500">Borders</span><br/><br/>
+<div class="w-24 h-8 border-black border-2 inline-block"></div>
+<div class="w-24 h-8 border-black border-2 border-dashed inline-block"></div>
+<div class="w-24 h-8 border-black border-2 border-dotted inline-block"></div>
+<br/><br/>
+<span class="text-blue-500">Margin</span><br/><br/>
+<div class="border-2 border-black">
+<div class="border-2 border-black m-24">
+<small class="text-center block">Margin</small>
+</div>
+</div>
+<br/>
+<span class="text-blue-500">Padding</span><br/><br/>
+<div class="border-2 border-black p-12">
+<div class="border-2 border-black p-12">
+<small class="text-center">Padding</small>
+</div>
+</div>
+<br/>
+<span class="text-blue-500">Flexbox</span><br/><br/>
+<div class="flex">
+<div class="flex-1 text-center border-l-2 border-t-2 border-b-2 border-pink-300">1</div>
+<div class="flex-1 text-center border-l-2 border-t-2 border-b-2 border-pink-300">2</div>
+<div class="flex-1 text-center border-l-2 border-t-2 border-b-2 border-pink-300">3</div>
+<div class="flex-1 text-center border-l-2 border-t-2 border-b-2 border-pink-300">4</div>
+<div class="flex-1 text-center border-l-2 border-t-2 border-b-2 border-pink-300">5</div>
+<div class="flex-1 text-center border-2 border-pink-300">6</div>
+</div>
+<br/>
+<span class="text-blue-500">Grid</span><br/><br/>
+<div class="grid grid-cols-3 gap-4">
+<div class="text-center border-2 border-pink-300">1</div>
+<div class="text-center border-2 border-pink-300">2</div>
+<div class="text-center border-2 border-pink-300">3</div>
+<div class="text-center border-2 border-pink-300">4</div>
+<div class="text-center border-2 border-pink-300">5</div>
+<div class="text-center border-2 border-pink-300">6</div>
+<div class="text-center border-2 border-pink-300">7</div>
+<div class="text-center border-2 border-pink-300">8</div>
+<div class="text-center border-2 border-pink-300">9</div>
+</div>

@@ -1,0 +1,83 @@
+In this block I'm going to cover what I learned from studying <strong>[JS]</strong> and my process throughout my learning period
+<br/><br/>
+Javascript was something that came naturally as the next step in my roadmap. Having worked previously with designing web elements, I felt that it was time to dive deeper into understanding more about the interactions occuring between the user and the elements on the website
+<br/><br/>
+Compared to <a href="https://www.ktradev.com/library/4" class="text-yellow-500">HTML</a> and <a href="https://www.ktradev.com/library/5" class="text-blue-500">CSS</a>, learning javascript was a uphill challenge with many trials and errors. Coming from a background with no previous experience in another programming language. Javascript taught me how to think as a programmer, how to use google to my advantage and ultimately made me a better developer
+<br/><br/>
+<hr>
+<br/>
+<span class="text-yellow-500">Comments</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+//This is a single comment<br/>
+/*<br/>
+Here is a multiline comment where I can write in multiple lines<br/>
+Which could be good for documentation purposes<br/>
+*/
+</div>
+<br/>
+<span class="text-yellow-500">Variables</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> hello <span class="text-red-300">=</span> <span class="text-yellow-300">"Hello world!"</span>; <span class="text-gray-500">//String</span><br/>
+<span class="text-blue-300">const</span> number <span class="text-purple-300">=</span> <span class="text-purple-300">2021</span>; <span class="text-gray-500">//Number</span><br/>
+<span class="text-blue-300">const</span> flag <span class="text-red-300">=</span> <span class="text-purple-300">true</span>; <span class="text-gray-500">//Boolean</span>
+</div>
+<br/>
+<span class="text-yellow-500">Array</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-gray-500">//Array of variables defined above</span><br/>
+<span class="text-blue-300">let</span> list <span class="text-red-300">=</span> [hello, number, flag];
+</div>
+<br/>
+<span class="text-yellow-500">Function</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">function</span> <span class="text-green-300">print</span>(<span class="text-yellow-300">element</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(element);<br/>
+}<br/>
+<span class="text-gray-500">//Calling the print function</span><br/>
+print(list[<span class="text-purple-300">0</span>]);
+</div>
+<br/>
+<span class="text-yellow-500">If statement</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">function</span> <span class="text-green-300">print</span>(<span class="text-yellow-300">element</span>, <span class="text-yellow-300">statement</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">if</span>(statement){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">"True"</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">else</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">"False"</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(element);<br/>
+}<br/>
+<span class="text-gray-500">//Calling the print function</span><br/>
+print(list[<span class="text-purple-300">0</span>], list[<span class="text-purple-300">2</span>]);
+</div>
+<br/>
+<span class="text-yellow-500">Object</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> print <span class="text-red-300">=</span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;list: [hello, number, flag],<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">method</span>: <span class="text-blue-300">function</span> <span class="text-green-300">print</span>(<span class="text-yellow-300">element</span>, <span class="text-yellow-300">statement</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">if</span>(statement){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">"True"</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">else</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">"False"</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(element);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}
+</div>
+<br/>
+<span class="text-yellow-500">Loops</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-gray-500">//for loop</span><br/>
+<span class="text-red-300">for</span>(<span class="text-300-blue">let</span> i <span class="text-red-300">=</span> <span class="text-purple-300">0</span>; i <span class="text-red-300"><</span> print.list.length; i<span class="text-red-300">++</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(print.list[i]);<br/>
+}<br/><br/>
+<span class="text-gray-500">//while loop</span><br/>
+<span class="text-red-300">while</span>(print.list[<span class="text-purple-300">1</span>]</span> <span class="text-red-300"><=</span> <span class="text-purple-300">3000</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;print.method(print.list[<span class="text-purple-300">1</span>], flag);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;print.list[<span class="text-purple-300">1</span>]<span class="text-red-300">++</span>;<br/>
+}
+</div>
+<br/>
