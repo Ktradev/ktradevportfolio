@@ -1,0 +1,125 @@
+In this block I'm going to cover what I learned from studying Express and my process throughout my learning period
+<br/><br/>
+<h6 class="text-lg font-semibold text-center">Project</h6>
+<small class="block text-center">I started learning Express by creating a project</small>
+<br/>
+<span class="text-gray-500">1. Install Express</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+npm install express
+</div>
+<br/>
+<span class="text-gray-500">2. Create Express app</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
+<span class="text-blue-300">const</span> app <span class="text-red-300">=</span> express();<br/>
+<span class="text-blue-300">const</span> port <span class="text-red-300">=</span> <span class="text-purple-300">3000</span>;<br/>
+<br/>
+app.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Hello World!'</span>)<br/>
+})<br/>
+<br/>
+app.listen(port, () <span class="text-blue-300">=></span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
+})
+</div>
+<br/>
+<span class="text-gray-500">3. Set up endpoints</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+app.get(<span class="text-yellow-300">'/timeline'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">req</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Timeline'</span>);<br/>
+})<br/>
+<br/>
+app.get(<span class="text-yellow-300">'/library/:id'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(req.params.id);<br/>
+})<br/>
+<br/>
+app.get(<span class="text-yellow-300">'/contact'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Contact'</span>);<br/>
+})
+</div>
+<br/>
+<span class="text-gray-500">4. Implement routers</span><br/><br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">index.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
+<span class="text-blue-300">const</span> app <span class="text-red-300">=</span> express();<br/>
+<span class="text-blue-300">const</span> port <span class="text-red-300">=</span> <span class="text-purple-300">3000</span>;<br/>
+<br/>
+<span class="text-blue-300">const</span> timeline <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'./routes/timeline'</span>);<br/>
+<span class="text-blue-300">const</span> library <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'./routes/library'</span>);<br/>
+<span class="text-blue-300">const</span> contact <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'./routes/contact'</span>);<br/>
+<br/>
+app.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Hello World!'</span>)<br/>
+})<br/>
+<br/>
+app.use(<span class="text-yellow-300">'/timeline'</span>, timeline);<br/>
+app.use(<span class="text-yellow-300">'/library'</span>, library);<br/>
+app.use(<span class="text-yellow-300">'/contact'</span>, contact);<br/>
+<br/>
+app.listen(port, () <span class="text-blue-300">=></span>  {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
+})
+</div>
+<br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
+<br/>
+<span class="text-blue-300">const</span> router <span class="text-red-300">=</span> express.Router();<br/>
+<br/>
+router.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Timeline'</span>);<br/>
+)}<br/>
+<br/>
+<span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
+</div>
+<br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/library.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
+<br/>
+<span class="text-blue-300">const</span> router <span class="text-red-300">=</span> express.Router();<br/>
+<br/>
+router.get(<span class="text-yellow-300">'/:id'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(req.params.id);<br/>
+)}<br/>
+<br/>
+<span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
+</div>
+<br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/contact.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
+<br/>
+<span class="text-blue-300">const</span> router <span class="text-red-300">=</span> express.Router();<br/>
+<br/>
+router.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Contact'</span>);<br/>
+)}<br/>
+<br/>
+<span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
+</div>
+<br/>
+<span class="text-gray-500">5. Add error handler</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-gray-500">//throw 404 error when no end points were found</span><br/>
+app.use((<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-500">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> err <span class="text-red-300">= new</span> <span class="text-blue-300">=></span>(<span class="text-yellow-300">'Not Found'</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;err.status <span class="text-red-300">=</span> <span class="text-purple-300">404</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
+)}<br/>
+<br/>
+<span class="text-gray-500">//error handler</span><br/>
+app.use((<span class="text-yellow-500">err</span>, <span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> status <span class="text-red-300">=</span> <span class="text-yellow-300">'Status code:'</span> <span class="text-red-300">+</span> err.status;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> message <span class="text-red-300">=</span> err.message;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(status <span class="text-red-300">+</span> <span class="text-yellow-300">'</span><span class="text-purple-300">\n</span><span class="text-yellow-300">'</span> <span class="text-red-300">+</span> message);<br/>
+)}
+</div>
+<br/><br/>
+<a href="https://github.com/Ktradev/express-project" class="py-4 block text-center bg-gray-500 text-white">Github</a>

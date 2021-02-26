@@ -1,0 +1,114 @@
+In this block I'm going to cover what I learned from studying <strong>[SASS]</strong> and my process throughout my learning period
+<br/><br/>
+<h6 class="text-lg font-semibold text-center">Project</h6>
+<small class="block text-center">I started learning SASS by creating a project</small>
+<br/>
+<span class="text-pink-500">1. Install Node.js</span><br/><br/>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614114611848/a9XojiPP4.png" alt="screenshot">
+<br/>
+Following the documentation, one of the methods for installing SASS was to install it through node as a dependency. In order to do that I had to install node first.
+<br/><br/>
+<span class="text-pink-500">2. Create app directory</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+npm init -y
+</div>
+<br/>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614121233630/FwPNiXdEb.png" alt="screenshot">
+<br/>
+<span class="text-pink-500">3. Install SASS</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+npm install -g sass
+</div>
+<br/>
+<span class="text-pink-500">4. Setting up folder structure</span><br/><br/>
+<i class="far fa-folder inline-block"></i><span class="inline-block ml-2">sass-project</span>
+<div class="border-l-2 ml-1.5 border-black py-3"></div>
+<div class="border-t-2 ml-1.5 border-black w-6 inline-block"></div><i class="far fa-file inline-block ml-2"></i><span class="ml-2 inline-block">package.json</span>
+<div class="border-l-2 mt-1.5 ml-1.5 border-black py-3"></div>
+<div class="border-t-2 ml-1.5 border-black w-6 inline-block"></div><i class="far fa-folder inline-block ml-2"></i><span class="ml-2 inline-block">scss</span>
+<div class="border-l-2 mt-1.5 ml-16 border-black py-3"></div>
+<div class="border-t-2 ml-16 border-black w-6 inline-block"></div><i class="far fa-file inline-block ml-2"></i><span class="ml-2 inline-block">style.scss</span>
+<div class="border-l-2 mt-1.5 ml-16 border-black py-3"></div>
+<div class="border-t-2 mt-1.5 ml-16  border-black w-6 inline-block"></div><i class="far fa-folder inline-block ml-2"></i><span class="ml-2 inline-block">css</span>
+<div class="border-l-2 mt-1.5 ml-32 border-black py-3"></div>
+<div class="border-t-2 ml-32 border-black w-6 inline-block"></div><i class="far fa-file inline-block ml-2"></i><span class="ml-2 inline-block">style.scss</span>
+<div class="border-l-2 ml-1.5 border-black py-3"></div>
+<div class="border-t-2 ml-1.5 border-black w-6 inline-block"></div><i class="far fa-file inline-block ml-2"></i><span class="ml-2 inline-block">index.html</span>
+<br/><br/>
+<span class="text-pink-500">5. index.html</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+&lt;!<span class="text-red-300">DOCTYPE</span> <span class="text-purple-300">HTML</span>&gt;<br/>
+&lt;<span class="text-red-300">html</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">head</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">title</span>&gt;SASS project&lt;<span class="text-red-300">/title</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">link</span> <span class="text-green-300">rel</span>=<span class="text-yellow-300">"stylesheet"</span> <span class="text-green-300">type</span>=<span class="text-yellow-300">"text/css"</span> <span class="text-green-300">href</span>=<span class="text-yellow-300">"scss/css/style.css"</span>&gt;
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-red-300">head</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-red-300">body</span>&gt;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-red-300">body</span>&gt;<br/>
+&lt;/<span class="text-red-300">html</span>&gt;<br/>
+</div>
+<br/>
+<span class="text-pink-500">6. Watch for changes</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>sass --watch scss/style.scss:scss/css/style.css</span>
+</div>
+<br/>
+<span class="text-pink-500">7. Variables</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+$pc: 1024px;<br/>
+$tablet: 768px;<br/>
+$gray-text: #6B7280;<br/>
+<br/>
+#container{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;color: $gray-text;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@media(min-width: $tablet){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 75% !important;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;@media(min-width: $pc){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width: 50% !important;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 100%;<br/>
+}
+</div>
+<br/>
+<span class="text-pink-500">8. Nesting & Mixin</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+@mixin date{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;margin: 2rem 0;<br/>
+}<br/>
+<br/>
+.date{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;.date-header{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@include date;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h3:nth-child(2){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-left: auto<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}
+</div>
+<br/>
+<span class="text-pink-500">9. Inheritance & Extend</span><br/><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+%timestamp-icon{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;justify-content: center;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;align-items: center;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;width: 1.5rem;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;height: 1.5rem;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;background-color: $dark-green-background;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;border-radius: 9999px;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;color: white;<br/>
+}<br/
+<br/>
+.timestamp{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;.timestamp-icon{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@extend %timestamp-icon;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}
+</div>
+<br/>
+<span class="text-pink-500">10. Result</span><br/><br/>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614206985229/iLgTwezm0.png" alt="screenshot">
+<br/><br/>
+<a href="https://github.com/Ktradev/sass-project" class="py-4 block text-center bg-pink-500 text-white">Github</a>
