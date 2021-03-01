@@ -19,7 +19,7 @@ app.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500"
 })<br/>
 <br/>
 app.listen(port, () <span class="text-blue-300">=></span>{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
 })
 </div>
 <br/>
@@ -59,7 +59,7 @@ app.use(<span class="text-yellow-300">'/library'</span>, library);<br/>
 app.use(<span class="text-yellow-300">'/contact'</span>, contact);<br/>
 <br/>
 app.listen(port, () <span class="text-blue-300">=></span>  {<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
 })
 </div>
 <br/>
@@ -72,7 +72,7 @@ app.listen(port, () <span class="text-blue-300">=></span>  {<br/>
 <br/>
 router.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Timeline'</span>);<br/>
-)}<br/>
+})<br/>
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
 </div>
@@ -86,7 +86,7 @@ router.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-5
 <br/>
 router.get(<span class="text-yellow-300">'/:id'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;res.send(req.params.id);<br/>
-)}<br/>
+})<br/>
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
 </div>
@@ -100,26 +100,51 @@ router.get(<span class="text-yellow-300">'/:id'</span>, (<span class="text-yello
 <br/>
 router.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Contact'</span>);<br/>
-)}<br/>
+})<br/>
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
 </div>
 <br/>
 <span class="text-gray-500">5. Add error handler</span><br/><br/>
-<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
-<span class="text-gray-500">//throw 404 error when no end points were found</span><br/>
-app.use((<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-500">=></span> {<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> err <span class="text-red-300">= new</span> <span class="text-blue-300">=></span>(<span class="text-yellow-300">'Not Found'</span>);<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;err.status <span class="text-red-300">=</span> <span class="text-purple-300">404</span>;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
-)}<br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">index.js</span><br/>
 <br/>
-<span class="text-gray-500">//error handler</span><br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> ApiError <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'ApiError'</span>);<br/>
+<br/>
+<span class="text-gray-500">//Error handler</span><br/>
 app.use((<span class="text-yellow-500">err</span>, <span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> status <span class="text-red-300">=</span> <span class="text-yellow-300">'Status code:'</span> <span class="text-red-300">+</span> err.status;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> message <span class="text-red-300">=</span> err.message;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console.log</span>(status <span class="text-red-300">+</span> <span class="text-yellow-300">'</span><span class="text-purple-300">\n</span><span class="text-yellow-300">'</span> <span class="text-red-300">+</span> message);<br/>
-)}
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">if</span>(err <span class="text-red-300">instanceof</span> ApiError){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.status(err.code).json(err.message);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.status(<span class="text-purple-300">500</span>.json(<span class="text-yellow-300">'something went wrong'</span>);<br/>
+})
+</div>
+<br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">ApiError.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">class</span> <span class="text-green-300">ApiError</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">constructor</span>(<span class="text-yellow-500">code</span>, <span class="text-yellow-500">message</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.code <span class="text-red-300">=</span> code;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.message <span class="text-red-300">=</span> message;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">static</span> <span class="text-green-300">badRequest</span>(<span class="text-yellow-500">msg</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">return new</span> ApiError(<span class="text-purple-300">400</span>, msg);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">static</span> <span class="text-green-300">permissionDeined</span>(<span class="text-yellow-500">msg</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">return new</span> ApiError(<span class="text-purple-300">403</span>, msg);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">static</span> <span class="text-green-300">notFound</span>(<span class="text-yellow-500">msg</span>){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">return new</span> ApiError(<span class="text-purple-300">404</span>, msg);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+}<br/>
+<br/>
+<span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> ApiError;
 </div>
 <br/><br/>
 <a href="https://github.com/Ktradev/express-project" class="py-4 block text-center bg-gray-500 text-white">Github</a>

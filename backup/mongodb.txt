@@ -1,0 +1,177 @@
+In this block I'm going to cover what I learned from studying MongoDB and my process throughout my learning period
+<br/><br/>
+<h6 class="text-lg font-semibold text-center">Project</h6>
+<small class="block text-center">I started learning MongoDB by creating a project</small>
+<br/>
+<span class="text-green-500">1. Create cluster</span><br/><br/>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614533718875/ZSQesvZJe.png" alt="screenshot">
+<br/>
+<span class="text-green-500">2. Set network access</span><br/><br/>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614533832219/q1Ia9Mfix.png" alt="screenshot">
+<br/>
+<span class="text-green-500">3. Connect to cluster</span><br/><br/>
+<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614533912045/dyRIpX_5G.png" alt="screenshot">
+<br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">index.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
+<span class="text-blue-300">const</span> app <span class="text-red-300">=</span> express();<br/>
+<br/>
+<span class="text-blue-300">const</span> mongoose <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'mongoose'</span>); <span class="text-gray-500">//npm install mongoose</span><br/>
+<span class="text-blue-300">require</span>(<span class="text-yellow-300">'dotenv/config'</span>); <span class="text-gray-500">//.env file</span><br/>
+<br/>
+<span class="text-blue-300">const</span> port <span class="text-red-300">=</span> <span class="text-purple-300">3000</span>;<br/>
+<br/>
+<span class="text-blue-300">const</span> timeline <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'./routes/timeline'</span>);<br/>
+<span class="text-blue-300">const</span> library <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'./routes/library'</span>);<br/>
+<span class="text-blue-300">const</span> contact <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'./routes/contact'</span>);<br/>
+<br/>
+<span class="text-gray-500">//Converts incoming data to JSON</span><br/>
+app.use(express.json());<br/>
+<br/>
+app.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Hello World!'</span>)<br/>
+})<br/>
+<br/>
+app.use(<span class="text-yellow-300">'/timeline'</span>, timeline);<br/>
+app.use(<span class="text-yellow-300">'/library'</span>, library);<br/>
+app.use(<span class="text-yellow-300">'/contact'</span>, contact);<br/>
+<br/>
+<span class="text-gray-500">//Error handler</span><br/>
+app.use((<span class="text-yellow-500">err</span>, <span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">if</span>(err <span class="text-red-300">instanceof</span> ApiError){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.status(err.code).json(err.message);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">return</span>;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;res.status(<span class="text-purple-300">500</span>.json(<span class="text-yellow-300">'something went wrong'</span>);<br/>
+})<br/>
+<br/>
+<span class="text-gray-500">//Connect to DB</span><br/>
+mongoose.connect(<span class="text-blue-300">process</span>.<span class="text-blue-300">env</span>.DB_CONNECTION, { useNewUrlParser: <span class="text-purple-300">true</span>, useUnifiedTopology: <span class="text-purple-300">true</span> }, (<span class="text-yellow-500">err</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">if</span>(err){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">'DB error message: ' </span> <span class="text-red-300">+</span> err);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">else</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">'connected to DB!'</span>);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+})<br/>
+<br/>
+app.listen(port, () <span class="text-blue-300">=></span>  {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
+})
+</div>
+<br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">.env</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+DB_CONNECTION=mongodb://kenny:**********@cluster0-shard-00-00.cstxc.mongodb.net:27017,cluster0-shard-00-01.cstxc.mongodb.net:27017,cluster0-shard-00-02.cstxc.mongodb.net:27017/Pomodoro?ssl=true&replicaSet=atlas-12ky6f-shard-0&authSource=admin&retryWrites=true&w=majority
+</div>
+<br/>
+<span class="text-green-500">3. Building the schema model</span><br/><br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">models/Timestamp.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span class="text-blue-300">const</span> mongoose <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'mongoose'</span>);<br/>
+<br/>
+<span class="text-blue-300">const</span> schema <span class="text-red-300">=</span> mongoose.Schema({<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;title: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: <span class="text-blue-300">String</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;required: <span class="text-purple-300">true</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;description: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: <span class="text-blue-300">String</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;required: <span class="text-purple-300">true</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;date: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: <span class="text-blue-300">Date</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default: <span class="text-blue-300">Date</span>.<span class="text-blue-300">now</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;icon: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: <span class="text-blue-300">String</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;required: <span class="text-purple-300">required</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;},<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;color: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type: <span class="text-blue-300">String</span>,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;required: <span class="text-purple-300">true</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+})<br/>
+<br/>
+<span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> mongoose.model(<span class="text-yellow-300">'Timestamp'</span>
+, schema);
+</div>
+<br/>
+<span class="text-green-500">4. CRUD - (C)reate</span><br/><br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+router.post(<span class="text-yellow-300">'/'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> timestamp <span class="text-red-300">= new</span> Timestamp({<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: req.body.title,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: req.body.description,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon: req.body.icon,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: req.body.color<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;})<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">try</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> save <span class="text-red-300">= await</span> timestamp.save();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.json(save);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">catch</span>(err){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+})
+</div>
+<br/>
+<span class="text-green-500">5. CRUD - (R)ead</span><br/><br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+router.get(<span class="text-yellow-300">'/'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">//res.send('Timeline');</span><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">try</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> timestamps <span class="text-red-300">= await</span> <span class="text-blue-300">Timestamp</span>.find();<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.json(timestamps);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">catch</span>(err){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+})
+</div>
+<br/>
+<span class="text-green-500">6. CRUD - (U)pdate</span><br/><br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+router.patch(<span class="text-yellow-300">'/:id'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">try</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> timestamp <span class="text-red-300">= await</span> <span class="text-blue-300">Timestamp</span>.updateOne({_id: req.params.id}, {$set: {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: req.body.title,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: req.body.description,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;icon: req.body.icon,<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: req.body.color<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}});<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.json(timestamp);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">catch</span>(err){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+})
+</div>
+<br/>
+<span class="text-green-500">7. CRUD - (D)elete</span><br/><br/>
+<i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
+<br/>
+<div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+router.delete(<span class="text-yellow-300">'/:id'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">try</span>{<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> timestamp <span class="text-red-300">= await</span> <span class="text-blue-300">Timestamp</span>.remove({_id: req.params.id});<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;res.json(timestamp);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">catch</span>(err){<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+})
+</div>
+<br/><br/>
+<a href="https://github.com/Ktradev/mongodb-project" class="py-4 block text-center bg-green-500 text-white">Github</a>

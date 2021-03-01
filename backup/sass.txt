@@ -71,24 +71,20 @@ $gray-text: #6B7280;<br/>
 }
 </div>
 <br/>
-<span class="text-pink-500">8. Nesting & Mixin</span><br/><br/>
+<span class="text-pink-500">8. Nesting</span><br/><br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
-@mixin date{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;margin: 2rem 0;<br/>
-}<br/>
-<br/>
 .date{<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;.date-header{<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@include date;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;display: flex;<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin: 2rem 0;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;h3:nth-child(2){<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-left: auto<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;margin-left: auto;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 }
 </div>
 <br/>
-<span class="text-pink-500">9. Inheritance & Extend</span><br/><br/>
+<span class="text-pink-500">9. Inheritance</span><br/><br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
 %timestamp-icon{<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;display:flex;<br/>
@@ -106,9 +102,6 @@ $gray-text: #6B7280;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@extend %timestamp-icon;<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 }
-</div>
+</div><br/>
 <br/>
-<span class="text-pink-500">10. Result</span><br/><br/>
-<img src="https://cdn.hashnode.com/res/hashnode/image/upload/v1614206985229/iLgTwezm0.png" alt="screenshot">
-<br/><br/>
 <a href="https://github.com/Ktradev/sass-project" class="py-4 block text-center bg-pink-500 text-white">Github</a>
