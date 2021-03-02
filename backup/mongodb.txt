@@ -15,6 +15,7 @@ In this block I'm going to cover what I learned from studying MongoDB and my pro
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">index.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
 <span class="text-blue-300">const</span> app <span class="text-red-300">=</span> express();<br/>
 <br/>
@@ -61,18 +62,22 @@ mongoose.connect(<span class="text-blue-300">process</span>.<span class="text-bl
 app.listen(port, () <span class="text-blue-300">=></span>  {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
 })
+</span>
 </div>
 <br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">.env</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 DB_CONNECTION=mongodb://kenny:**********@cluster0-shard-00-00.cstxc.mongodb.net:27017,cluster0-shard-00-01.cstxc.mongodb.net:27017,cluster0-shard-00-02.cstxc.mongodb.net:27017/Pomodoro?ssl=true&replicaSet=atlas-12ky6f-shard-0&authSource=admin&retryWrites=true&w=majority
+</span>
 </div>
 <br/>
 <span class="text-green-500">3. Building the schema model</span><br/><br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">models/Timestamp.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> mongoose <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'mongoose'</span>);<br/>
 <br/>
 <span class="text-blue-300">const</span> schema <span class="text-red-300">=</span> mongoose.Schema({<br/>
@@ -100,12 +105,14 @@ DB_CONNECTION=mongodb://kenny:**********@cluster0-shard-00-00.cstxc.mongodb.net:
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> mongoose.model(<span class="text-yellow-300">'Timestamp'</span>
 , schema);
+</span>
 </div>
 <br/>
 <span class="text-green-500">4. CRUD - (C)reate</span><br/><br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 router.post(<span class="text-yellow-300">'/'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> timestamp <span class="text-red-300">= new</span> Timestamp({<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: req.body.title,<br/>
@@ -121,12 +128,14 @@ router.post(<span class="text-yellow-300">'/'</span>, <span class="text-blue-300
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 })
+</span>
 </div>
 <br/>
 <span class="text-green-500">5. CRUD - (R)ead</span><br/><br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 router.get(<span class="text-yellow-300">'/'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">//res.send('Timeline');</span><br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">try</span>{<br/>
@@ -137,12 +146,14 @@ router.get(<span class="text-yellow-300">'/'</span>, <span class="text-blue-300"
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 })
+</span>
 </div>
 <br/>
 <span class="text-green-500">6. CRUD - (U)pdate</span><br/><br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 router.patch(<span class="text-yellow-300">'/:id'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">try</span>{<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> timestamp <span class="text-red-300">= await</span> <span class="text-blue-300">Timestamp</span>.updateOne({_id: req.params.id}, {$set: {<br/>
@@ -157,12 +168,14 @@ router.patch(<span class="text-yellow-300">'/:id'</span>, <span class="text-blue
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 })
+</span>
 </div>
 <br/>
 <span class="text-green-500">7. CRUD - (D)elete</span><br/><br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 router.delete(<span class="text-yellow-300">'/:id'</span>, <span class="text-blue-300">async</span> (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>, <span class="text-yellow-500">next</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-red-300">try</span>{<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">const</span> timestamp <span class="text-red-300">= await</span> <span class="text-blue-300">Timestamp</span>.remove({_id: req.params.id});<br/>
@@ -172,6 +185,7 @@ router.delete(<span class="text-yellow-300">'/:id'</span>, <span class="text-blu
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;next(err);<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
 })
+</span>
 </div>
 <br/><br/>
 <a href="https://github.com/Ktradev/mongodb-project" class="py-4 block text-center bg-green-500 text-white">Github</a>

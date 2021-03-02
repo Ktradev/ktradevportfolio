@@ -10,6 +10,7 @@ npm install express
 <br/>
 <span class="text-gray-500">2. Create Express app</span><br/><br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
 <span class="text-blue-300">const</span> app <span class="text-red-300">=</span> express();<br/>
 <span class="text-blue-300">const</span> port <span class="text-red-300">=</span> <span class="text-purple-300">3000</span>;<br/>
@@ -21,10 +22,12 @@ app.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-500"
 app.listen(port, () <span class="text-blue-300">=></span>{<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
 })
+</span>
 </div>
 <br/>
 <span class="text-gray-500">3. Set up endpoints</span><br/><br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 app.get(<span class="text-yellow-300">'/timeline'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">req</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Timeline'</span>);<br/>
 })<br/>
@@ -36,12 +39,14 @@ app.get(<span class="text-yellow-300">'/library/:id'</span>, (<span class="text-
 app.get(<span class="text-yellow-300">'/contact'</span>, (<span class="text-yellow-500">req</span>, <span class="text-yellow-500">res</span>) <span class="text-blue-300">=></span> {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;res.send(<span class="text-yellow-300">'Contact'</span>);<br/>
 })
+</span>
 </div>
 <br/>
 <span class="text-gray-500">4. Implement routers</span><br/><br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">index.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
 <span class="text-blue-300">const</span> app <span class="text-red-300">=</span> express();<br/>
 <span class="text-blue-300">const</span> port <span class="text-red-300">=</span> <span class="text-purple-300">3000</span>;<br/>
@@ -61,11 +66,13 @@ app.use(<span class="text-yellow-300">'/contact'</span>, contact);<br/>
 app.listen(port, () <span class="text-blue-300">=></span>  {<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-300">console</span>.<span class="text-blue-300">log</span>(<span class="text-yellow-300">`Listening at</span> ${port} <span class="text-yellow-300">`</span>)<br/>
 })
+</span>
 </div>
 <br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/timeline.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
 <br/>
 <span class="text-blue-300">const</span> router <span class="text-red-300">=</span> express.Router();<br/>
@@ -75,11 +82,13 @@ router.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-5
 })<br/>
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
+</span>
 </div>
 <br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/library.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
 <br/>
 <span class="text-blue-300">const</span> router <span class="text-red-300">=</span> express.Router();<br/>
@@ -89,11 +98,13 @@ router.get(<span class="text-yellow-300">'/:id'</span>, (<span class="text-yello
 })<br/>
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
+</span>
 </div>
 <br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">routes/contact.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> express <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'express'</span>);<br/>
 <br/>
 <span class="text-blue-300">const</span> router <span class="text-red-300">=</span> express.Router();<br/>
@@ -103,12 +114,14 @@ router.get(<span class="text-yellow-300">'/'</span>, (<span class="text-yellow-5
 })<br/>
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> router;
+</span>
 </div>
 <br/>
 <span class="text-gray-500">5. Add error handler</span><br/><br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">index.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">const</span> ApiError <span class="text-red-300">=</span> <span class="text-blue-300">require</span>(<span class="text-yellow-300">'ApiError'</span>);<br/>
 <br/>
 <span class="text-gray-500">//Error handler</span><br/>
@@ -120,11 +133,13 @@ app.use((<span class="text-yellow-500">err</span>, <span class="text-yellow-500"
 <br/>
 &nbsp;&nbsp;&nbsp;&nbsp;res.status(<span class="text-purple-300">500</span>.json(<span class="text-yellow-300">'something went wrong'</span>);<br/>
 })
+</span>
 </div>
 <br/>
 <i class="far fa-file inline-block"></i><span class="inline-block ml-2">ApiError.js</span><br/>
 <br/>
 <div class="bg-gray-700 p-6 text-white tracking-wide font-mono rounded-lg">
+<span>
 <span class="text-blue-300">class</span> <span class="text-green-300">ApiError</span>{<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-green-300">constructor</span>(<span class="text-yellow-500">code</span>, <span class="text-yellow-500">message</span>){<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this.code <span class="text-red-300">=</span> code;<br/>
@@ -145,6 +160,7 @@ app.use((<span class="text-yellow-500">err</span>, <span class="text-yellow-500"
 }<br/>
 <br/>
 <span class="text-blue-300">module</span>.<span class="text-blue-300">exports</span> <span class="text-red-300">=</span> ApiError;
+</span>
 </div>
 <br/><br/>
 <a href="https://github.com/Ktradev/express-project" class="py-4 block text-center bg-gray-500 text-white">Github</a>
