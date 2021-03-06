@@ -1,8 +1,8 @@
 In this block I'm going to cover what I learned from studying <strong>[CSS]</strong> and my process throughout my learning period
 <br/><br/>
-I was introduced to CSS not long after I had started learning about <a href="https://www.ktradev.com/library/4" class="text-yellow-500">HTML</a>. In my previous web projects I would add a link to my stylesheets where I would try to change the style of the elements. By doing so I became more familiarized with CSS and was able to transition into working with preprocessors like <a href="https://www.ktradev.com/library/7" class="text-pink-500">SASS</a>
+I was introduced to CSS not long after I had started learning about <a href="https://www.ktradev.com/library/1" class="text-yellow-500">HTML</a>. In my previous web projects I would add a link to my stylesheets where I would try to change the style of the elements. By doing so I became more familiarized with CSS and was able to transition into working with preprocessors like <a href="https://www.ktradev.com/library/4" class="text-pink-500">SASS</a>
 <br/><br/>
-CSS has a lot of properties much like how HTML has various tags. It was a tough learning curve for me but because the changes that I made was visual. I was able to grasp some of the concepts much faster. Later on when I became more confident with CSS, I began looking into frameworks like <a href="https://www.ktradev.com/library/8" class="text-purple-500">Bootstrap</a>
+CSS has a lot of properties much like how HTML has various tags. It was a tough learning curve for me but because the changes that I made was visual. I was able to grasp some of the concepts much faster. Later on when I became more confident with CSS, I began looking into frameworks like <a href="https://getbootstrap.com/" class="text-purple-500">Bootstrap</a>
 <br/><br/>
 <hr>
 <br/>
