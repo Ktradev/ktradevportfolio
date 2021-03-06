@@ -1,4 +1,4 @@
-In this block I'm going to cover what I learned from studying <strong>[SASS]</strong> and my process throughout my learning period
+In this post I'm going to cover what I learned from studying <strong>[SASS]</strong> and my process throughout my learning period
 <br/><br/>
 <h6 class="text-lg font-semibold text-center">Project</h6>
 <small class="block text-center">I started learning SASS by creating a project</small>
