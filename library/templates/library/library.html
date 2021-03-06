@@ -3,7 +3,7 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
-		<title>Ktradev's {{ panel.title }} block</title>
+		<title>Ktradev's {{ skill.title }}</title>
 		<link rel="icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
 		<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.ico' %}"/>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css" integrity="sha512-+WF6UMXHki/uCy0vATJzyA9EmAcohIQuwpNz0qEO+5UeE5ibPejMRdFuARSrl1trs3skqie0rY/gNiolfaef5w==" crossorigin="anonymous" />
@@ -21,15 +21,15 @@
 	</head>
 	<body>
 		<nav class="flex justify-center lg:w-6/12 md:w-9/12 w-full mx-auto py-4 mt-8 px-5 sticky top-0 bg-white z-20">
-			<span class="font-semibold w-full text-center">{{ panel.title }}</span>
+			<span class="font-semibold w-full text-center">{{ skill.title }}</span>
 			<span id="menu" class="ml-auto"><i class="fas fa-bars cursor-pointer"></i></span>
 		</nav>
 		<div id="dropdown" class="flex flex-col items-center px-4 sticky top-12 z-20 hidden">
 			<div class="flex flex-col justify-center lg:w-6/12 md:w-9/12 w-full bg-white text-gray-500 px-2 pb-4">
-				<a href="{% url 'timeline' %}">
+				<a href="{% url 'profile' %}">
 					<div class="flex dropdown-item p-4 cursor-pointer hover:bg-gray-100">
 						<div class="dropdown-icon"><i class="fas fa-code-branch"></i></div>
-						<div class="dropdown-text ml-4">Timeline</div>
+						<div class="dropdown-text ml-4">Profile</div>
 					</div>
 				</a>
 				<a href="https://blog.ktradev.com/">
@@ -47,11 +47,11 @@
 			</div>
 		</div>
 		<div id="library" class="flex flex-col items-center px-4 pb-8">
-			<div class="flex flex-col justify-center items-center lg:w-6/12 md:w-9/12 w-full h-48 bg-{{ panel.timestamp.color }}-100 my-8">
-				<i class="fas fa-{{ panel.timestamp.icon }} fa-lg text-{{ panel.timestamp.color }}-500"></i>
+			<div class="flex flex-col justify-center items-center lg:w-6/12 md:w-9/12 w-full h-48 bg-{{ skill.color }}-100 my-8">
+				<i class="fas fa-{{ skill.icon }} fa-lg text-{{ skill.color }}-500"></i>
 			</div>
 			<div class="lg:w-6/12 md:w-9/12 w-full">
-				{{ panel.description | safe }}
+				{{ skill.description | safe }}
 			</div>
 		</div>
 		<script src="{% static 'js/navbar.js' %}"></script>

@@ -21,7 +21,7 @@ urlpatterns = [
     path('', include('landing.urls')),
     path('contact/', include('contact.urls')),
     path('library/', include('library.urls')),
-    path('timeline/', include('timeline.urls'))
+    path('profile/', include('profile.urls'))
 ]
 
 #handler404 = 'authentication.views.custom_page_not_found_view'
