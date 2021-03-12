@@ -3,6 +3,10 @@
     background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 h3, small, span, p{
 	word-wrap: break-word;
 }
