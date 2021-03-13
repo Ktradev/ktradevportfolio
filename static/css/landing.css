@@ -16,6 +16,11 @@ body{
 	transition: 0.5s;
 }
 
+.project{
+	border-color: #395550;
+	transition: 0.5s;
+}
+
 @-webkit-keyframes night {
 	0%{ 
 		color: #395550;
